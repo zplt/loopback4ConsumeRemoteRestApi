@@ -1,0 +1,47 @@
+{
+  "name": "jsonplaceholder",
+  "connector": "rest",
+  "baseURL": "https://jsonplaceholder.typicode.com",
+  "crud": false,
+  "options": {
+    "headers": {
+      "accept": "application/json",
+      "content-type": "application/json"
+    }
+  },
+  "strictSSL": false,
+  "operations": [
+    {
+      "template": {
+        "method": "GET",
+        "url": "https://jsonplaceholder.typicode.com/posts"
+      },
+      "functions": {
+        "getPost": []
+      }
+    },
+    {
+      "template": {
+        "method": "GET",
+        "url": "https://jsonplaceholder.typicode.com/posts/{id}"
+      },
+      "functions": {
+        "getPostById": ["id"]
+      }
+    },
+    {
+      "template": {
+        "method": "POST",
+        "url": "https://jsonplaceholder.typicode.com/posts/",
+        "body": {
+          "userId": "{userId}",
+          "title": "{title}",
+          "body": "{body}"
+        }
+      },
+      "functions": {
+        "updatePost": ["userId","title","body"]
+      }
+    }
+  ]
+}

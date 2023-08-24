@@ -1,0 +1,21 @@
+{
+  "name": "virustotal",
+  "connector": "rest",
+  "baseURL": "https://www.virustotal.com/vtapi/v2",
+  "crud": false,
+  "operations": [
+    {
+      "template": {
+        "method": "POST",
+        "url": "https://www.virustotal.com/vtapi/v2/url/scan",
+        "form":{
+          "apikey": "${apikey}",
+          "url": "${url}"
+        }
+      },
+      "functions": {
+        "getUrlStatus": ["apikey","url"]
+      }
+    }
+  ]
+}
