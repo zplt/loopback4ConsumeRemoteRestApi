@@ -6,7 +6,7 @@
 import {inject} from '@loopback/core';
 import {JsonPlaceHolderBinding} from '../binding/keys';
 import {Jsonplaceholder, PostValues} from '../services';
-import {get, param, post, requestBody, response} from '@loopback/rest';
+import {del, get, param, post, requestBody, response} from '@loopback/rest';
 
 export class JsonplaceholderController {
   constructor(
@@ -29,6 +29,7 @@ export class JsonplaceholderController {
     @param.path.integer('id') id:number,
   ):Promise<PostValues>{
     const result=await this.jsonPlaceHolderService.getPostById(id);
+    delete result.id;
     return result;
   }
 
